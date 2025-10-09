@@ -56,7 +56,8 @@ colcon build --packages-select signal_processing
 # 加载环境变量（新终端需重新执行）
 source install/setup.bash
 ```
-2. 启动节点（需 3 个独立终端）
+2. 启动节点（需 4 个独立终端）
+
 终端 1：启动信号发布者
 ```bash
 
@@ -106,11 +107,17 @@ plaintext
 /parameter_events
 /rosout
 ```
+终端4：在容器内安装foxglove-bridge
+```bash
+sudo apt install ros-jazzy-foxglove-bridge
+```
+
 3. 信号可视化（Foxglove Studio）
+
 步骤 1：安装并启动 Foxglove Studio
 
-    下载地址：Foxglove Studio 官网（支持 Windows/macOS/Linux）
-    启动后点击左上角「Open Connection」→ 选择「ROS 2」→ 点击「Connect」（默认连接本地 ROS2 环境）。
+    启动后点击左上角「Open Connection」
+    选择websocket即可
 
 步骤 2：添加波形图面板
 
@@ -134,9 +141,4 @@ plaintext
       方波：(current_time - std::floor(current_time)) < 0.5 ? 1.0 : -1.0（1 秒周期，前 0.5 秒高电平，后 0.5 秒低电平）。
     多话题同步处理：订阅者通过两个独立回调函数接收正弦波和方波，用成员变量存储最新信号值，确保处理时使用 “最新一对信号”，避免数据不同步。
 
-常见问题排查
-
-  编译报错 “undefined reference to sin”：CMakeLists.txt 中未链接数学库。需在 add_executable 后添加 target_link_libraries(signal_publisher m)（m 为 C++ 数学库）。
-  Foxglove 看不到话题：确认节点已启动，且 Foxglove 与 ROS2 环境在同一主机（容器内开发需确保网络互通，本地开发建议关闭防火墙）。
-  处理后信号异常：检查订阅者中存储信号的成员变量是否正确赋值，或处理逻辑中的条件判断是否正确（同号判断：(last_sine > 0 && last_square > 0) || (last_sine < 0 && last_square < 0)）。
 
