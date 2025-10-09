@@ -76,7 +76,7 @@ plaintext
 ```zsh
 
 # 新终端需先加载环境变量
-source install/setup.bash
+source install/setup.zsh
 
 # 启动订阅者
 ros2 run signal_processing signal_subscriber
