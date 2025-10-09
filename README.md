@@ -48,18 +48,18 @@ ros2_ws/                # ROS2 工作空间根目录
 ### 快速开始
 1. 编译功能包
 在 ROS2 工作空间根目录（ros2_ws）执行以下命令：
-```bash
+```zsh
 
 # 编译 signal_processing 包
 colcon build --packages-select signal_processing
 
 # 加载环境变量（新终端需重新执行）
-source install/setup.bash
+source install/setup.zsh
 ```
 2. 启动节点（需 4 个独立终端）
 
 终端 1：启动信号发布者
-```bash
+```zsh
 
 ros2 run signal_processing signal_publisher
 ```
@@ -73,7 +73,7 @@ plaintext
 ```
 终端 2：启动信号订阅者
 
-```bash
+```zsh
 
 # 新终端需先加载环境变量
 source install/setup.bash
@@ -90,7 +90,7 @@ plaintext
 [INFO] [signal_subscriber]: 接收正弦波: -0.062791, 方波: 1.000000 → 处理后: 0.000000
 ```
 终端 3：验证话题（可选）
-```bash
+```zsh
 
 source install/setup.bash
 
@@ -108,8 +108,9 @@ plaintext
 /rosout
 ```
 终端4：在容器内安装foxglove-bridge
-```bash
+```zsh
 sudo apt install ros-jazzy-foxglove-bridge
+ros2 launch foxglove_bridge foxglove_bridge_launch.xml  
 ```
 
 3. 信号可视化（Foxglove Studio）
