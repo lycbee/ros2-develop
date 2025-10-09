@@ -33,32 +33,24 @@ ros2_ws/                # ROS2 工作空间根目录
 
 ```
 
-### 环境依赖
-
-  操作系统：Ubuntu 22.04 LTS（或 WSL2 下的 Ubuntu 22.04）
-  ROS2 版本：Jazzy Jalisco
-  依赖包：
-      rclcpp：ROS2 C++ 核心库（节点创建、话题通信）
-      std_msgs：ROS2 标准消息库（提供 String 消息类型）
-  开发工具：colcon（ROS2 编译工具）、VS Code + Dev Containers（推荐容器化开发）
 
 ### 快速开始
 1. 编译功能包
 在 ROS2 工作空间根目录（ros2_ws）执行以下命令：
 
-```bash
+```zsh
 
 ### 仅编译 simple_communication 包（提高编译效率）
 colcon build --packages-select simple_communication
 
 ### 加载编译生成的环境变量（新终端需重新执行）
-source install/setup.bash
+source install/setup.zsh
 ```
 
 2. 启动节点（需 2 个独立终端）
 终端 1：启动发布者
 
-```bash
+```zsh
 
 ros2 run simple_communication publisher
 
@@ -72,10 +64,10 @@ plaintext
 
 终端 2：启动订阅者
 
-```bash
+```zsh
 
 # 新终端需先加载环境变量
-source install/setup.bash
+source install/setup.zsh
 
 # 启动订阅者
 ros2 run simple_communication subscriber
