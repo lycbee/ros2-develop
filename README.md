@@ -61,7 +61,7 @@ source install/setup.zsh
 终端 1：启动信号发布者
 ```zsh
 
-ros2 run signal_processing signal_publisher
+ros2 run my_communication signal_publisher
 ```
 ### 预期输出（1000Hz 高频日志，截取部分）：
 ```
@@ -79,7 +79,7 @@ plaintext
 source install/setup.zsh
 
 # 启动订阅者
-ros2 run signal_processing signal_subscriber
+ros2 run my_communication signal_subscriber
 ```
 预期输出（与发布者同步）：
 ```
@@ -92,7 +92,7 @@ plaintext
 终端 3：验证话题（可选）
 ```zsh
 
-source install/setup.bash
+source install/setup.zsh
 
 # 查看当前活跃话题
 ros2 topic list
